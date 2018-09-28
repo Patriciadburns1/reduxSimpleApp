@@ -1,14 +1,14 @@
 
-import '../assets/css/app.css';
 import React,{Component} from 'react'; 
 import SearchBar from './search_bar'; 
 import API_KEY from '../config/index'; 
-import YTSearch from 'youtube-api-search'; 
+import YTSearch from 'youtube-api-v3-search'; 
 import VideoList from './video_list'; 
 import VideoDetail from './video_detail'; 
+import {debounce} from 'lodash'; 
+import '../assets/css/app.css';
 
-
-class App extends Component{
+ class App extends Component{
     constructor(props){
         super(props); 
         this.state = { 
@@ -16,12 +16,12 @@ class App extends Component{
             selectedVideo: null
             };  
 
-            this.videoSearch('surfboards'); 
+        this.videoSearch('surfboards'); 
         
     }
 
     videoSearch(term){
-        YTSearch({ key: API_KEY, term: term }, (videos) => {
+        YTSearch({ key:API_KEY, term: term },(videos) => {
             console.log(videos); 
                 this.setState({
                     videos: videos,
@@ -30,7 +30,7 @@ class App extends Component{
             });
     }
 
-
+    
 
 
     render(){
