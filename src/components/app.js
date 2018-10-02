@@ -1,4 +1,3 @@
-
 import React,{Component} from 'react'; 
 import SearchBar from './search_bar'; 
 import API_KEY from '../config/index'; 
@@ -21,7 +20,7 @@ import '../assets/css/app.css';
     }
 
     videoSearch(term){
-        YTSearch({ key:API_KEY, term: term },(videos) => {
+        YTSearch({ key: API_KEY, term: term },(videos) => {
             console.log(videos); 
                 this.setState({
                     videos: videos,
