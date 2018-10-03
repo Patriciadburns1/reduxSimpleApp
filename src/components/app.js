@@ -1,7 +1,7 @@
 import React,{Component} from 'react'; 
 import SearchBar from './search_bar'; 
 import API_KEY from '../config/index'; 
-import YTSearch from 'youtube-api-v3-search'; 
+import YTSearch from 'youtube-api-search'; 
 import VideoList from './video_list'; 
 import VideoDetail from './video_detail'; 
 import {debounce} from 'lodash'; 
@@ -33,7 +33,7 @@ import '../assets/css/app.css';
 
 
     render(){
-    const videoSearch = _.debounce((term)=> {this.videoSearch(term)}, 300); 
+    const videoSearch = debounce((term)=> this.videoSearch(term), 300); 
         return(
             <div >
                 <SearchBar onSearchTermChange={videoSearch}/>
